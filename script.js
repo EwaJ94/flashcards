@@ -6,9 +6,9 @@ const nextCard = document.getElementsByClassName(".next-card")
 const turnCard = document.getElementsByClassName(".turn-card")
 const deleteCard = document.getElementsByClassName(".delete-card")
 
-addCard.addEventListener("click", () => {
-    const newCard = document.createElement("input")
-    newCard.type = "text"
-    document.querySelector(".one-card").appendChild(newCard)
+// addCard.addEventListener("click", () => {
+//     const newCard = document.createElement("input")
+//     newCard.type = "text"
+//     document.querySelector(".one-card").appendChild(newCard)
 
-})
+// })

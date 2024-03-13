@@ -34,13 +34,37 @@ img {
     margin: 2rem;
 }
 
-.main-buttons img:hover {
-    background: linear-gradient(#404040, #BFBFBF);
 
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
 }
 
-.new-card input{
-    border: 2rem solid black;
-    width: 3rem;
-    height: 5rem;
+.move-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.move-cards img {
+    margin: 0 1rem;
+}
+
+.one-card {
+    border: 0.2rem solid black;
+    border-radius: 0.5rem;
+    width: 15rem;
+    height: 22rem;
+}
+/* 
+.change-card {
+    margin-top: 1.5rem;
+} */
+
+.change-card img {
+    margin: 1rem 0.5rem;
 }
