@@ -4,29 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Study cards</title>
+    <title>Flashcards</title>
 </head>
 <body>
-    <h1>Study cards</h1>
-    <section class="main-buttons">
-        <img class="add-card" src="/icons/plus.png" alt="add new card">
-        <img class="study-cards" src="/icons/study.png" alt="study cards">
-        <img class="remove-all" src="/icons/cross.png" alt="remove all cards">
-    </section>
-    <section class="cards">
-        <div class="move-cards">
-            <img class="previous-card" src="/icons/previous.png" alt="previous card">
-            <div class="one-card">
-                ...
+    <h1>Flashcards</h1>
+    <section class="container">
+        <aside class="main-buttons">
+            <div class="add-new-flashcard">
+                <input type="image" src="/icons/plus.png" class="add-flashcard" alt="add new flashcard" title="add new flashcard">
+                <input type="text" placeholder="one side">
+                <input type="text" placeholder="the other side">
+                <input type="submit" value="save">
             </div>
-            <img class="next-card" src="/icons/next.png" alt="next card">
-        </div>
-        <div class="change-card">
-            <img class="save-card" src="/icons/check.png" alt="save card">
-            <img class="turn-card" src="/icons/rotate.png" alt="turn over the card">
-            <img class="delete-card" src="/icons/cross.png" alt="delete card">
-        </div>
+            <input type="image" src="/icons/study.png" class="learn-flashcard" alt="learn flashcard" title="start learning">
+            <input type="image" src="/icons/cross.png" class="remove-all" alt="remove all flashcards" title="remove all flashcards">
+        </aside>
+        <main class="flashcards">
+            <div class="move-flashcards">
+                <input type="image" src="/icons/previous.png" class="previous-flashcard" alt="previous flashcard">
+                <div class="one-flashcard">
+                    ...
+                </div>
+                <input type="image" src="/icons/next.png" class="next-flashcard" alt="next flashcard">
+            </div>
+            <div class="change-flashcard">
+                <input type="image" src="/icons/rotate.png" class="turn-flashcard" alt="turn over the flashcard" title="turn over the flashcard">
+                <input type="image" src="/icons/cross.png" class="delete-flashcard" alt="delete flashcard" title="delete flashcard">
+            </div>
+        </main>
     </section>
+
     <script src="script.js"></script>
 </body>
 </html>
