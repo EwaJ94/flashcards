@@ -71,11 +71,12 @@ input[type=image] {
     border-radius: 0.5rem;
     width: 15rem;
     height: 22rem;
+
+    display: flex;
+    flex-direction: column;
 }
-/* 
-.change-card {
-    margin-top: 1.5rem;
-} */
+
+
 
 .change-flashcard img {
     margin: 1rem 0.5rem;

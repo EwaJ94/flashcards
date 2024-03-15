@@ -12,9 +12,9 @@
         <aside class="main-buttons">
             <div class="add-new-flashcard">
                 <input type="image" src="/icons/plus.png" class="add-flashcard" alt="add new flashcard" title="add new flashcard">
-                <input type="text" placeholder="one side">
-                <input type="text" placeholder="the other side">
-                <input type="submit" value="save">
+                <input type="text" placeholder="one side" class="one-side-text">
+                <input type="text" placeholder="the other side" class="other-side-text">
+                <input type="submit" value="save" class="submit-flashcard">
             </div>
             <input type="image" src="/icons/study.png" class="learn-flashcard" alt="learn flashcard" title="start learning">
             <input type="image" src="/icons/cross.png" class="remove-all" alt="remove all flashcards" title="remove all flashcards">
@@ -23,7 +23,12 @@
             <div class="move-flashcards">
                 <input type="image" src="/icons/previous.png" class="previous-flashcard" alt="previous flashcard">
                 <div class="one-flashcard">
-                    ...
+                    <div class="one-side">
+                        
+                    </div>
+                    <div class="other-side">
+                        
+                    </div>
                 </div>
                 <input type="image" src="/icons/next.png" class="next-flashcard" alt="next flashcard">
             </div>
@@ -34,6 +39,6 @@
         </main>
     </section>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
