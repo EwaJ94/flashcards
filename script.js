@@ -29,26 +29,28 @@ addFlashcard.addEventListener("submit", (e) => {
 
     const flashcardsArrayJSON = JSON.stringify(flashcardsArray)
     localStorage.setItem("flashcards", flashcardsArrayJSON)
-   
-    console.log(flashcardsArray);
-  
-    
  
     myFlashcard = localStorage.getItem("flashcards")
     myFlashcardJSON = JSON.parse(myFlashcard)
 
+    
+        let myStorage = localStorage.getItem("flashcards")
+        let myStorageJSON = JSON.parse(myStorage)
+    
+        myStorageJSON.forEach ((oneFlashcard) => {
+            const newOneSideText = document.createElement("p")
+            const newOtherSideText = document.createElement("p")
+    
+            newOneSideText.textContent = oneFlashcard["oneSide"]
+            newOtherSideText.textContent = oneFlashcard["otherSide"]
+    
+            document.querySelector(".one-side").appendChild(newOneSideText)
+            document.querySelector(".other-side").appendChild(newOtherSideText)
+            
+          
+            console.log(newOneSideText);
+            console.log(newOtherSideText);
+        })
+    })
 
-})
-const submitForm = document.querySelector(".submit-flashcard").addEventListener("click", () => {
-    let myStorage = localStorage.getItem("flashcards")
-    let myStorageJSON = JSON.parse(myStorage)
 
-    myStorageJSON.forEach = (oneFlashcard) => {
-        const newOneSideText = document.createElement("p")
-        // const newOtherSideText = document.createElement("p")
-        newOneSideText.textContent = oneFlashcard.oneSide
-        // newOtherSideText.textContent = flashcardsArray[1]
-        document.querySelector(".one-side").appendChild(newOneSideText)
-        // document.querySelector(".other-side").appendChild(newOtherSideText)
-    }
-})

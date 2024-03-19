@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   
+    height: 100vh;
 }
 
 h1 {
@@ -11,6 +11,8 @@ h1 {
     background: -webkit-linear-gradient(#404040, #BFBFBF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin: 0;
+    padding-top: 1rem;
 }
 
 /* app */
@@ -28,22 +30,25 @@ input[type=image] {
     border-radius: 0.5rem;
     box-shadow: 0.2rem 0.2rem 0.5rem rgb(69, 66, 66);
     cursor: pointer;
-    
+}
+
+input[type=image]:active {
+    transform: scale(0.75);
 }
 
 /* aside buttons */
-.main-buttons {
+.aside-panel {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     height: inherit;
-    width: 20%;
+    width: 30%;
     
 }
 
 
-.main-buttons img {
+.aside-panel img {
     margin: 2rem;
 }
 
