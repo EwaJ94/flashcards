@@ -7,7 +7,6 @@
     <title>Flashcards</title>
 </head>
 <body>
-    <h1>Flashcards</h1>
     <section class="container">
         <aside class="aside-panel">
             <h3>Add new card</h3>
@@ -16,13 +15,15 @@
                 <input type="text" name="otherSide" placeholder="the other side" class="other-side-text">
                 <input type="submit" value="save" class="submit-flashcard">
             </form>
-            <textarea name="allCards" class="all-cards" cols="20" rows="20"></textarea>
-            <div class="asside-buttons">
+            <textarea name="allCards" class="list-of-cards" cols="20" rows="20"></textarea>
+            <div class="aside-buttons">
                 <input type="image" src="/icons/study.png" class="learn-flashcard" alt="learn flashcard" title="start learning">
                 <input type="image" src="/icons/cross.png" class="remove-all" alt="remove all flashcards" title="remove all flashcards">
         </div>
         </aside>
+        
         <main class="flashcards">
+            <h1>Flashcards</h1>
             <section class="move-flashcards">
                 <input type="image" src="/icons/previous.png" class="previous-flashcard" alt="previous flashcard">
                 <div class="one-flashcard">

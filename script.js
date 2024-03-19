@@ -33,24 +33,24 @@ addFlashcard.addEventListener("submit", (e) => {
     myFlashcard = localStorage.getItem("flashcards")
     myFlashcardJSON = JSON.parse(myFlashcard)
 
-    
-        let myStorage = localStorage.getItem("flashcards")
-        let myStorageJSON = JSON.parse(myStorage)
-    
-        myStorageJSON.forEach ((oneFlashcard) => {
-            const newOneSideText = document.createElement("p")
-            const newOtherSideText = document.createElement("p")
-    
-            newOneSideText.textContent = oneFlashcard["oneSide"]
-            newOtherSideText.textContent = oneFlashcard["otherSide"]
-    
-            document.querySelector(".one-side").appendChild(newOneSideText)
-            document.querySelector(".other-side").appendChild(newOtherSideText)
-            
-          
-            console.log(newOneSideText);
-            console.log(newOtherSideText);
-        })
+// write the text on the card
+    let myStorage = localStorage.getItem("flashcards")
+    let myStorageJSON = JSON.parse(myStorage)
+
+    myStorageJSON.forEach ((oneFlashcard) => {
+        const newOneSideText = document.createElement("p")
+        const newOtherSideText = document.createElement("p")
+
+        newOneSideText.textContent = oneFlashcard["oneSide"]
+        newOtherSideText.textContent = oneFlashcard["otherSide"]
+
+        document.querySelector(".one-side").appendChild(newOneSideText)
+        document.querySelector(".other-side").appendChild(newOtherSideText)
+        
+        
+        console.log(newOneSideText);
+        console.log(newOtherSideText);
     })
+})
 
 
