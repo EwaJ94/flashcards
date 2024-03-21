@@ -33,24 +33,52 @@ addFlashcard.addEventListener("submit", (e) => {
     myFlashcard = localStorage.getItem("flashcards")
     myFlashcardJSON = JSON.parse(myFlashcard)
 
-// write the text on the card
-    let myStorage = localStorage.getItem("flashcards")
-    let myStorageJSON = JSON.parse(myStorage)
 
-    myStorageJSON.forEach ((oneFlashcard) => {
-        const newOneSideText = document.createElement("p")
-        const newOtherSideText = document.createElement("p")
+// write the text on the list
+    const listOfFlashcards = localStorage.getItem("flashcards")
+    const listOfFlashcardsJSON = JSON.parse(listOfFlashcards)
 
-        newOneSideText.textContent = oneFlashcard["oneSide"]
-        newOtherSideText.textContent = oneFlashcard["otherSide"]
+    
+    document.querySelector(".list-of-flashcards").textContent = ""
+    listOfFlashcardsJSON.forEach ((oneFlashcard) => {
 
-        document.querySelector(".one-side").appendChild(newOneSideText)
-        document.querySelector(".other-side").appendChild(newOtherSideText)
+        const newText = document.createElement("p")
         
-        
-        console.log(newOneSideText);
-        console.log(newOtherSideText);
+        newText.textContent = oneFlashcard["oneSide"]
+
+        document.querySelector(".list-of-flashcards").appendChild(newText)
+
+        console.log(newText)
+
     })
 })
 
+// remove all flashcards
+removeAllFlashcards.addEventListener("click", () => {
+    const question = confirm("Are you sure you want to remove all?")
 
+    if (question) {
+        document.querySelector(".list-of-flashcards").textContent = ""
+        localStorage.clear()
+    }
+
+    
+})
+
+// write the text on the card
+    // let myStorage = localStorage.getItem("flashcards")
+    // let myStorageJSON = JSON.parse(myStorage)
+
+    // myStorageJSON.forEach ((oneFlashcard) => {
+    //     const newOneSideText = document.createElement("p")
+    //     const newOtherSideText = document.createElement("p")
+
+    //     newOneSideText.textContent = oneFlashcard["oneSide"]
+    //     newOtherSideText.textContent = oneFlashcard["otherSide"]
+
+    //     document.querySelector(".one-side").appendChild(newOneSideText)
+    //     document.querySelector(".other-side").appendChild(newOtherSideText)
+        
+        
+    //     console.log(newOneSideText);
+    //     console.log(newOtherSideText);
