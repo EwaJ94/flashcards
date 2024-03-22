@@ -59,26 +59,34 @@ removeAllFlashcards.addEventListener("click", () => {
 
     if (question) {
         document.querySelector(".list-of-flashcards").textContent = ""
+        document.querySelector(".one-side").textContent = ""
+        document.querySelector(".other-side").textContent = ""
         localStorage.clear()
     }
 
     
 })
 
+
 // write the text on the card
-    // let myStorage = localStorage.getItem("flashcards")
-    // let myStorageJSON = JSON.parse(myStorage)
+learnFleshcards.addEventListener(("click"), () => {
+    const listOfFlashcards = localStorage.getItem("flashcards")
+    const listOfFlashcardsJSON = JSON.parse(listOfFlashcards)
 
-    // myStorageJSON.forEach ((oneFlashcard) => {
-    //     const newOneSideText = document.createElement("p")
-    //     const newOtherSideText = document.createElement("p")
 
-    //     newOneSideText.textContent = oneFlashcard["oneSide"]
-    //     newOtherSideText.textContent = oneFlashcard["otherSide"]
 
-    //     document.querySelector(".one-side").appendChild(newOneSideText)
-    //     document.querySelector(".other-side").appendChild(newOtherSideText)
-        
-        
-    //     console.log(newOneSideText);
-    //     console.log(newOtherSideText);
+    listOfFlashcardsJSON.forEach ((oneFlashcard) => {
+    const newOneSideText = document.createElement("p")
+    const newOtherSideText = document.createElement("p")
+
+    newOneSideText.textContent = oneFlashcard["oneSide"]
+    newOtherSideText.textContent = oneFlashcard["otherSide"]
+
+    document.querySelector(".one-side").appendChild(newOneSideText)
+    document.querySelector(".other-side").appendChild(newOtherSideText)
+    
+    })
+})
+
+    
+
