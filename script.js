@@ -20,6 +20,7 @@ addFlashcard.addEventListener("submit", (e) => {
     e.preventDefault()
 
     flashcardsArray.push({
+        id: uuidv4(),
         oneSide: e.target.elements.oneSide.value,
         otherSide: e.target.elements.otherSide.value
     })
@@ -42,11 +43,18 @@ addFlashcard.addEventListener("submit", (e) => {
     document.querySelector(".list-of-flashcards").textContent = ""
     listOfFlashcardsJSON.forEach ((oneFlashcard) => {
 
+        const newDiv = document.createElement("div")
         const newText = document.createElement("p")
+        const newButton = document.createElement("button")
         
+        newDiv.className = "one-add-flashcard"
         newText.textContent = oneFlashcard["oneSide"]
+        newButton.textContent = "x"
 
-        document.querySelector(".list-of-flashcards").appendChild(newText)
+        newDiv.appendChild(newText)
+        newDiv.appendChild(newButton)
+        document.querySelector(".list-of-flashcards").appendChild(newDiv)
+        
 
         console.log(newText)
 
