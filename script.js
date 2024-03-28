@@ -31,35 +31,42 @@ addFlashcard.addEventListener("submit", (e) => {
     const flashcardsArrayJSON = JSON.stringify(flashcardsArray)
     localStorage.setItem("flashcards", flashcardsArrayJSON)
  
-    myFlashcard = localStorage.getItem("flashcards")
-    myFlashcardJSON = JSON.parse(myFlashcard)
+    // myFlashcard = localStorage.getItem("flashcards")
+    // myFlashcardJSON = JSON.parse(myFlashcard)
 
 
 // write the text on the list
-    const listOfFlashcards = localStorage.getItem("flashcards")
-    const listOfFlashcardsJSON = JSON.parse(listOfFlashcards)
-
+    generateHTMLStructure()
     
-    document.querySelector(".list-of-flashcards").textContent = ""
-    listOfFlashcardsJSON.forEach ((oneFlashcard) => {
-
-        const newDiv = document.createElement("div")
-        const newText = document.createElement("p")
-        const newButton = document.createElement("button")
-        
-        newDiv.className = "one-add-flashcard"
-        newText.textContent = oneFlashcard["oneSide"]
-        newButton.textContent = "x"
-
-        newDiv.appendChild(newText)
-        newDiv.appendChild(newButton)
-        document.querySelector(".list-of-flashcards").appendChild(newDiv)
-        
-
-        console.log(newText)
-
-    })
 })
+
+// delete one flashcard
+
+
+// document.querySelector(".delete-flashcard").addEventListener("click", (oneFlashcard, id) => {
+//     // const listOfFlashcards = localStorage.getItem("flashcards")
+//     // const listOfFlashcardsJSON = JSON.parse(listOfFlashcards)
+
+//     const index = oneFlashcard.findIndex( (checkingCard) => {
+//         return checkingCard.id === id
+        
+//     })
+
+//     if(index > -1){
+//         ourNames.splice(index,1)}
+
+//     // const newListOfFlashcards = () => {
+//         document.querySelector(".list-of-flashcards").textContent = ""
+
+//         const newData = getSavedNames()
+//         newData.forEach( (oneText) => {
+//             const newList = generateHTMLStructure(oneText)
+//             document.querySelector(".list-of-flashcards").appendChild(newList)
+//         })
+
+        
+//     // }
+// })
 
 // remove all flashcards
 removeAllFlashcards.addEventListener("click", () => {
