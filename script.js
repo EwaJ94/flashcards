@@ -1,72 +1,43 @@
-const oneSide = document.querySelector(".one-side-text")
-const otherSide = document.querySelector(".other-side-text")
-const addFlashcard = document.querySelector(".add-new-flashcard")
-const learnFleshcards = document.querySelector(".learn-flashcard")
-const removeAllFlashcards = document.querySelector(".remove-all")
-const previousFlashcard = document.querySelector(".previous-flashcard")
-const nextFlashcard = document.querySelector(".next-flashcard")
-const turnFlashcard = document.querySelector(".turn-flashcard")
-const deleteFlashcard = document.querySelector(".delete-flashcard")
-
-
-if (localStorage.getItem("flashcards") === null){
-    var flashcardsArray = []
-} else {
-    flashcardsArray = JSON.parse(localStorage.getItem("flashcards"))
-}
 
 // save input text to local storage
+const addFlashcard = document.querySelector(".add-new-flashcard")
 addFlashcard.addEventListener("submit", (e) => {
     e.preventDefault()
 
-    flashcardsArray.push({
+    const newFlashcard = {
         id: uuidv4(),
         oneSide: e.target.elements.oneSide.value,
         otherSide: e.target.elements.otherSide.value
-    })
+    }
     
+    saveFlashcard(newFlashcard)
+
     e.target.elements.oneSide.value = ""
     e.target.elements.otherSide.value = ""
 
-    const flashcardsArrayJSON = JSON.stringify(flashcardsArray)
-    localStorage.setItem("flashcards", flashcardsArrayJSON)
+
  
-    // myFlashcard = localStorage.getItem("flashcards")
-    // myFlashcardJSON = JSON.parse(myFlashcard)
-
-
 // write the text on the list
-    generateHTMLStructure()
-    
+generateHTMLStructure()
 })
-
 // delete one flashcard
 
 
-// document.querySelector(".delete-flashcard").addEventListener("click", (oneFlashcard, id) => {
-//     // const listOfFlashcards = localStorage.getItem("flashcards")
-//     // const listOfFlashcardsJSON = JSON.parse(listOfFlashcards)
+document.querySelector(".delete-flashcard").addEventListener("click", (oneFlashcard, id) => {
 
-//     const index = oneFlashcard.findIndex( (checkingCard) => {
-//         return checkingCard.id === id
+    const listOfFlashcards = JSON.parse(localStorage.getItem("flashcards"))
+
+    const indexToDelete = oneFlashcard.findIndex( (oneCard) => {
+        return oneCard.id === id
         
-//     })
+    })
 
-//     if(index > -1){
-//         ourNames.splice(index,1)}
+    listOfFlashcards.splice(indexToDelete, 1)
 
-//     // const newListOfFlashcards = () => {
-//         document.querySelector(".list-of-flashcards").textContent = ""
+    localStorage.setItem("flashcards", JSON.stringify(listOfFlashcards))
+    generateHTMLStructure()
+})
 
-//         const newData = getSavedNames()
-//         newData.forEach( (oneText) => {
-//             const newList = generateHTMLStructure(oneText)
-//             document.querySelector(".list-of-flashcards").appendChild(newList)
-//         })
-
-        
-//     // }
-// })
 
 // remove all flashcards
 removeAllFlashcards.addEventListener("click", () => {
@@ -84,24 +55,20 @@ removeAllFlashcards.addEventListener("click", () => {
 
 
 // write the text on the card
-learnFleshcards.addEventListener(("click"), () => {
-    const listOfFlashcards = localStorage.getItem("flashcards")
-    const listOfFlashcardsJSON = JSON.parse(listOfFlashcards)
-
-
-
-    listOfFlashcardsJSON.forEach ((oneFlashcard) => {
-    const newOneSideText = document.createElement("p")
-    const newOtherSideText = document.createElement("p")
-
-    newOneSideText.textContent = oneFlashcard["oneSide"]
-    newOtherSideText.textContent = oneFlashcard["otherSide"]
-
-    document.querySelector(".one-side").appendChild(newOneSideText)
-    document.querySelector(".other-side").appendChild(newOtherSideText)
+// learnFleshcards.addEventListener(("click"), () => {
+//     const listOfFlashcards = JSON.parse(localStorage.getItem("flashcards"))
     
-    })
-})
+//     listOfFlashcards.forEach ((oneFlashcard) => {
+//     const newOneSideText = document.createElement("p")
+//     const newOtherSideText = document.createElement("p")
 
+//     newOneSideText.textContent = oneFlashcard["oneSide"]
+//     newOtherSideText.textContent = oneFlashcard["otherSide"]
+
+//     document.querySelector(".one-side").appendChild(newOneSideText)
+//     document.querySelector(".other-side").appendChild(newOtherSideText)
     
+//     })
+// })
+
 

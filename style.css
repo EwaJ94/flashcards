@@ -102,6 +102,7 @@ input[type=image]:active {
     box-shadow: none;
     border: 0.08rem solid black;
     border-radius: 0.3rem;
+    z-index: 200;
     cursor: pointer;
     outline: none;
    
