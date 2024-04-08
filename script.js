@@ -4,43 +4,29 @@ const addFlashcard = document.querySelector(".add-new-flashcard")
 addFlashcard.addEventListener("submit", (e) => {
     e.preventDefault()
 
+    let oneSideText = e.target.elements.oneSide.value
+    let otherSideText =e.target.elements.otherSide.value
+
     const newFlashcard = {
         id: uuidv4(),
-        oneSide: e.target.elements.oneSide.value,
-        otherSide: e.target.elements.otherSide.value
+        oneSide: oneSideText,
+        otherSide: otherSideText
     }
+    if(oneSideText && otherSideText){
+        saveFlashcard(newFlashcard)
+    } 
     
-    saveFlashcard(newFlashcard)
-
-    e.target.elements.oneSide.value = ""
-    e.target.elements.otherSide.value = ""
-
+    oneSideText = ""
+    otherSideText = ""
 
  
 // write the text on the list
 generateHTMLStructure()
 })
-// delete one flashcard
-
-
-document.querySelector(".delete-flashcard").addEventListener("click", (oneFlashcard, id) => {
-
-    const listOfFlashcards = JSON.parse(localStorage.getItem("flashcards"))
-
-    const indexToDelete = oneFlashcard.findIndex( (oneCard) => {
-        return oneCard.id === id
-        
-    })
-
-    listOfFlashcards.splice(indexToDelete, 1)
-
-    localStorage.setItem("flashcards", JSON.stringify(listOfFlashcards))
-    generateHTMLStructure()
-})
 
 
 // remove all flashcards
-removeAllFlashcards.addEventListener("click", () => {
+document.querySelector(".remove-all").addEventListener("click", () => {
     const question = confirm("Are you sure you want to remove all?")
 
     if (question) {
