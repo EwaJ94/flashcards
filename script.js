@@ -5,7 +5,7 @@ addFlashcard.addEventListener("submit", (e) => {
     e.preventDefault()
 
     let oneSideText = e.target.elements.oneSide.value
-    let otherSideText =e.target.elements.otherSide.value
+    let otherSideText = e.target.elements.otherSide.value
 
     const newFlashcard = {
         id: uuidv4(),
@@ -41,20 +41,23 @@ document.querySelector(".remove-all").addEventListener("click", () => {
 
 
 // write the text on the card
-// learnFleshcards.addEventListener(("click"), () => {
-//     const listOfFlashcards = JSON.parse(localStorage.getItem("flashcards"))
+document.querySelector(".learn-flashcard").addEventListener(("click"), () => {
+    const listOfFlashcards = getSavedFlashcards()
     
-//     listOfFlashcards.forEach ((oneFlashcard) => {
-//     const newOneSideText = document.createElement("p")
-//     const newOtherSideText = document.createElement("p")
+    listOfFlashcards.forEach ((oneFlashcard) => {
+    const oneFlashcard = document.createElement("div")
+    const newOneSideText = document.createElement("p")
+    const newOtherSideText = document.createElement("p")
 
-//     newOneSideText.textContent = oneFlashcard["oneSide"]
-//     newOtherSideText.textContent = oneFlashcard["otherSide"]
 
-//     document.querySelector(".one-side").appendChild(newOneSideText)
-//     document.querySelector(".other-side").appendChild(newOtherSideText)
+    newOneSideText.textContent = oneFlashcard["oneSide"]
+    newOtherSideText.textContent = oneFlashcard["otherSide"]
+
     
-//     })
-// })
+    document.querySelector(".one-side").appendChild(newOneSideText)
+    document.querySelector(".other-side").appendChild(newOtherSideText)
+    
+    })
+})
 
 
