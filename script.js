@@ -1,3 +1,4 @@
+generatelistOfFlashcards()
 
 // save input text to local storage
 const addFlashcard = document.querySelector(".add-new-flashcard")
@@ -16,14 +17,14 @@ addFlashcard.addEventListener("submit", (e) => {
         saveFlashcard(newFlashcard)
     } 
     
-    oneSideText = ""
-    otherSideText = ""
+    e.target.elements.oneSide.value = ""
+    e.target.elements.otherSide.value = ""
 
- 
 // write the text on the list
-generateHTMLStructure()
-})
+    generatelistOfFlashcards()
 
+
+})
 
 // remove all flashcards
 document.querySelector(".remove-all").addEventListener("click", () => {
@@ -41,23 +42,8 @@ document.querySelector(".remove-all").addEventListener("click", () => {
 
 
 // write the text on the card
-document.querySelector(".learn-flashcard").addEventListener(("click"), () => {
-    const listOfFlashcards = getSavedFlashcards()
-    
-    listOfFlashcards.forEach ((oneFlashcard) => {
-    const oneFlashcard = document.createElement("div")
-    const newOneSideText = document.createElement("p")
-    const newOtherSideText = document.createElement("p")
-
-
-    newOneSideText.textContent = oneFlashcard["oneSide"]
-    newOtherSideText.textContent = oneFlashcard["otherSide"]
-
-    
-    document.querySelector(".one-side").appendChild(newOneSideText)
-    document.querySelector(".other-side").appendChild(newOtherSideText)
-    
-    })
+document.querySelector(".study-flashcard").addEventListener(("click"), () => {
+    studyAllFlashcards(0)
 })
 
 

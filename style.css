@@ -74,13 +74,13 @@ input[type=image]:active {
 }
 
 .submit-flashcard {
-    background-color: var(--third-color);
+    background-color: var(--second-color);
     font-weight: 600;
     cursor: pointer;
 }
 
 .submit-flashcard:hover {
-    background-color:var(--second-color);
+    background-color:var(--third-color);
 }
 
 .list-of-flashcards {
@@ -104,7 +104,18 @@ input[type=image]:active {
     height: 2rem;
     border-bottom: 0.05rem solid black;
 }
-.one-add-flashcard .delete-flashcard {
+
+.one-add-flashcard p {
+    width: 70%;
+}
+
+.buttons-in-list{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons-in-list .study-one-flashcard, .delete-flashcard {
     width: 1.3rem;
     height: 1.3rem;
     font-size: 0.8rem;
@@ -117,6 +128,7 @@ input[type=image]:active {
     outline: none;
    
 }
+
 
 .aside-buttons input {
     margin-right: 0.5rem;
@@ -165,20 +177,30 @@ input[type=image]:active {
     height: 100%;
     backface-visibility: hidden;
 }
+/* .one-side p{
+    visibility: hidden;
+}
 
+.other-side p {
+    visibility: hidden;
+} */
 .one-side {
-    background-color: var(--third-color);
+    background-color: var(--second-color);
     font-weight: 700;
     font-size: 2rem;
     word-wrap: break-word;
 }
 
 .other-side {
-    background-color: var(--second-color);
+    background-color: var(--third-color);
     font-weight: 400;
     word-wrap: break-word;
     font-size: 1.5rem;
     transform: rotateY(-180deg);
+}
+
+.active {
+    visibility:visible;
 }
 
 /* buttons */
