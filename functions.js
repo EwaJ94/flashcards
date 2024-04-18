@@ -39,6 +39,7 @@ const generatelistOfFlashcards = () => {
         
         newStudyButton.addEventListener("click", () => {
             studyOneFlashcard(oneFlashcard.id)
+            
         })
 
         newDeleteButton.addEventListener("click", () => {
@@ -73,29 +74,36 @@ const studyOneFlashcard = (id) => {
         return oneCard.id === id
     })
 
-
     studyAllFlashcards(indexToStudy)
-    
+   
 }
 
 const studyAllFlashcards = (id) => {
     const listOfFlashcards = getSavedFlashcards()
     
-        const oneSideFlashcard = document.createElement("div")
-        const otherSideFlashcard = document.createElement("div")
-        const newOneSideText = document.createElement("p")
-        const newOtherSideText = document.createElement("p")
+    const cleanOneSide = document.querySelector(".one-side")
+    cleanOneSide.textContent = ""
+    const cleanOtherSide = document.querySelector(".other-side")
+    cleanOtherSide.textContent = ""
+    
+    const oneSideFlashcard = document.createElement("div")
+    const otherSideFlashcard = document.createElement("div")
+    const newOneSideText = document.createElement("p")
+    const newOtherSideText = document.createElement("p")
 
-        oneSideFlashcard.className = "one-side-flashcard"
-        otherSideFlashcard.className = "other-side-flashcard"
-        newOneSideText.textContent = listOfFlashcards[id]["oneSide"]
-        newOtherSideText.textContent = listOfFlashcards[id]["otherSide"]
-        
-        oneSideFlashcard.appendChild(newOneSideText)
-        otherSideFlashcard.appendChild(newOtherSideText)
-        document.querySelector(".one-side").appendChild(oneSideFlashcard)
-        document.querySelector(".other-side").appendChild(otherSideFlashcard)
+    oneSideFlashcard.className = "one-side-flashcard"
+    otherSideFlashcard.className = "other-side-flashcard"
+    newOneSideText.textContent = listOfFlashcards[id]["oneSide"]
+    newOtherSideText.textContent = listOfFlashcards[id]["otherSide"]
+    
+    oneSideFlashcard.appendChild(newOneSideText)
+    otherSideFlashcard.appendChild(newOtherSideText)
+    document.querySelector(".one-side").appendChild(oneSideFlashcard)
+    document.querySelector(".other-side").appendChild(otherSideFlashcard)
+    
+
     
 }
+
 
 

@@ -42,8 +42,14 @@ document.querySelector(".remove-all").addEventListener("click", () => {
 
 
 // write the text on the card
-document.querySelector(".study-flashcard").addEventListener(("click"), () => {
-    studyAllFlashcards(0)
+
+    document.querySelector(".study-flashcard").addEventListener("click", () => {
+        studyAllFlashcards(0)
+    })
+
+
+
+// next flashcard
+document.querySelector(".next-flashcard").addEventListener("click", () =>{
+   studyAllFlashcards(1)
 })
-
-

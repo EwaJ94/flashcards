@@ -200,7 +200,7 @@ input[type=image]:active {
 }
 
 .active {
-    visibility:visible;
+    background-color: aqua;
 }
 
 /* buttons */
