@@ -20,6 +20,13 @@ const saveFlashcard = (newFlashcard) => {
 const generatelistOfFlashcards = () => {
     const listOfFlashcards = getSavedFlashcards()
     document.querySelector(".list-of-flashcards").textContent = ""
+    document.querySelector(".counter").textContent = ""
+
+    let number = document.createElement("p")
+
+    number.textContent = "Number of flashcards: " + (listOfFlashcards.length)
+
+    document.querySelector(".counter").appendChild(number)
 
     listOfFlashcards.forEach ((oneFlashcard) => {
         const newDiv = document.createElement("div")
@@ -53,7 +60,15 @@ const generatelistOfFlashcards = () => {
         newDiv.appendChild(newButtonsDiv)
         document.querySelector(".list-of-flashcards").appendChild(newDiv)
 
-})}
+   
+        }
+
+
+)}
+
+
+
+
 
 
 const deleteFlashcard = (id) => {

@@ -23,6 +23,7 @@ addFlashcard.addEventListener("submit", (e) => {
 // write the text on the list
     generatelistOfFlashcards()
 
+   
 
 })
 
@@ -43,13 +44,22 @@ document.querySelector(".remove-all").addEventListener("click", () => {
 
 // write the text on the card
 
-    document.querySelector(".study-flashcard").addEventListener("click", () => {
-        studyAllFlashcards(0)
-    })
+document.querySelector(".study-flashcard").addEventListener("click", () => {
+    studyAllFlashcards(0)
+})
 
 
 
 // next flashcard
+let nextClick = 0
 document.querySelector(".next-flashcard").addEventListener("click", () =>{
-   studyAllFlashcards(1)
+nextClick++
+   studyAllFlashcards(nextClick)
+})
+
+// previous flashcard
+let previousClick = 0
+document.querySelector(".previous-flashcard").addEventListener("click", () =>{
+previousClick--
+   studyAllFlashcards(previousClick)
 })
