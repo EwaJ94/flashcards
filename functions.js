@@ -85,13 +85,37 @@ const deleteFlashcard = (id) => {
 const studyOneFlashcard = (id) => {
     const allFlashcards = getSavedFlashcards()
 
-    const indexToStudy = allFlashcards.findIndex( (oneCard) => {
+    let indexToStudy = allFlashcards.findIndex( (oneCard) => {
         return oneCard.id === id
     })
-
+console.log(indexToStudy);
     studyAllFlashcards(indexToStudy)
-   
-}
+    document.querySelector(".next-flashcard").addEventListener("click", () => {
+        indexToStudy++
+        console.log(indexToStudy);
+        if(indexToStudy <= (allFlashcards.length -1)){
+            studyAllFlashcards(indexToStudy)
+        } else if (indexToStudy > (allFlashcards.length -1)){
+            indexToStudy = 0
+            studyAllFlashcards(indexToStudy)
+        }
+    })
+
+    document.querySelector(".previous-flashcard").addEventListener("click", () => {
+        indexToStudy--
+        console.log(allFlashcards.length -1);
+        if(indexToStudy <= (allFlashcards.length -1)){
+            studyAllFlashcards(indexToStudy)
+        } else if (indexToStudy < 0){
+            indexToStudy = (allFlashcards.length -1)
+            console.log(indexToStudy);
+            studyAllFlashcards(indexToStudy)
+        }
+    })
+    }
+
+    
+
 
 const studyAllFlashcards = (id) => {
     const listOfFlashcards = getSavedFlashcards()

@@ -43,23 +43,52 @@ document.querySelector(".remove-all").addEventListener("click", () => {
 
 
 // write the text on the card
-
-document.querySelector(".study-flashcard").addEventListener("click", () => {
-    studyAllFlashcards(0)
-})
-
-
-
+const writeText = (id) => {
+    document.querySelector(".study-flashcard").addEventListener("click", () => {
+        studyAllFlashcards(id)
+    })
+}
+writeText(0)
 // next flashcard
-let nextClick = 0
-document.querySelector(".next-flashcard").addEventListener("click", () =>{
-nextClick++
-   studyAllFlashcards(nextClick)
-})
+
+
+// const allFlashcards = getSavedFlashcards()
+// let nextClick = 0
+
+// nextClick++
+//     if(nextClick <= (allFlashcards.length -1)){
+//         studyAllFlashcards(nextClick)
+//     } else if (nextClick > (allFlashcards.length -1)){
+//         nextClick = 0
+//         studyAllFlashcards(0)
+//     }
+   
+// })
+
+
+
+// const nextCard = (id) => {
+//     let nextClick = id
+    
+//     const allFlashcards = getSavedFlashcards()
+//     document.querySelector(".next-flashcard").addEventListener("click", () =>{
+        
+//         nextClick = id++
+//         console.log(id);
+        
+//         if(nextClick <= (allFlashcards.length )){
+//             studyAllFlashcards(nextClick)
+//             console.log(id);
+//         } else if (nextClick > (allFlashcards.length )){
+//             nextClick = 0
+//             studyAllFlashcards(0)
+//         }
+//     })
+// }
 
 // previous flashcard
-let previousClick = 0
-document.querySelector(".previous-flashcard").addEventListener("click", () =>{
-previousClick--
-   studyAllFlashcards(previousClick)
-})
+// let previousClick = 0
+// document.querySelector(".previous-flashcard").addEventListener("click", () =>{
+// previousClick--
+//    studyAllFlashcards(previousClick)
+// })
