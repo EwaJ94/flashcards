@@ -147,9 +147,6 @@ input[type=image]:active {
     font-size: small;
 }
 
-.aside-buttons input {
-    margin-right: 0.5rem;
-}
 
 /* one flashcard */
 .flashcards {
@@ -196,13 +193,7 @@ input[type=image]:active {
     border-radius: 0.3rem;
     backface-visibility: hidden;
 }
-/* .one-side p{
-    visibility: hidden;
-}
 
-.other-side p {
-    visibility: hidden;
-} */
 .one-side {
     background-color: var(--second-color);
     font-weight: 700;
@@ -238,4 +229,9 @@ input[type=image]:active {
 
 .change-flashcard input {
     margin: 1rem 0.5rem;
+}
+
+.remove-button {
+    position: absolute;
+    bottom: -4rem;
 }

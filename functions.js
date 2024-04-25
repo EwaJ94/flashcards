@@ -1,33 +1,33 @@
+// get saved flashcard from LS
 const getSavedFlashcards = () => {
     const allFlashcards = localStorage.getItem("flashcards")
-
 
     if (allFlashcards === null){
         return []
     } else {
         return JSON.parse(allFlashcards)
     }
-
 }
 
+// save flashcard to LS
 const saveFlashcard = (newFlashcard) => {
     const allFlashcards = getSavedFlashcards()
-
     allFlashcards.push(newFlashcard)
     localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
 }
 
+// display list of flashcards to aside panel
 const generatelistOfFlashcards = () => {
     const listOfFlashcards = getSavedFlashcards()
     document.querySelector(".list-of-flashcards").textContent = ""
     document.querySelector(".counter").textContent = ""
 
+    // display the total number of flashcards
     let number = document.createElement("p")
-
     number.textContent = "Number of flashcards: " + (listOfFlashcards.length)
-
     document.querySelector(".counter").appendChild(number)
 
+    // generate html structure
     listOfFlashcards.forEach ((oneFlashcard) => {
         const newDiv = document.createElement("div")
         const newText = document.createElement("p")
@@ -43,10 +43,8 @@ const generatelistOfFlashcards = () => {
         newDeleteButton.textContent = "x"
         newDeleteButton.className = "delete-flashcard"
 
-        
         newStudyButton.addEventListener("click", () => {
             studyOneFlashcard(oneFlashcard.id)
-            
         })
 
         newDeleteButton.addEventListener("click", () => {
@@ -59,65 +57,45 @@ const generatelistOfFlashcards = () => {
         newDiv.appendChild(newText)
         newDiv.appendChild(newButtonsDiv)
         document.querySelector(".list-of-flashcards").appendChild(newDiv)
-
-   
         }
-
-
 )}
 
-
-
-
-
-
-const deleteFlashcard = (id) => {
-    const allFlashcards = getSavedFlashcards()
-
-    const indexToDelete = allFlashcards.findIndex( (oneCard) => {
-        return oneCard.id === id  
-    })
-
-    allFlashcards.splice(indexToDelete, 1)
-    localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
-}
-
+// find one flashcard
 const studyOneFlashcard = (id) => {
     const allFlashcards = getSavedFlashcards()
 
     let indexToStudy = allFlashcards.findIndex( (oneCard) => {
         return oneCard.id === id
     })
-console.log(indexToStudy);
-    studyAllFlashcards(indexToStudy)
+    generateFlashcard(indexToStudy)
+
+    // show next flashcard
     document.querySelector(".next-flashcard").addEventListener("click", () => {
         indexToStudy++
-        console.log(indexToStudy);
+        
         if(indexToStudy <= (allFlashcards.length -1)){
-            studyAllFlashcards(indexToStudy)
+            generateFlashcard(indexToStudy)
         } else if (indexToStudy > (allFlashcards.length -1)){
             indexToStudy = 0
-            studyAllFlashcards(indexToStudy)
+            generateFlashcard(indexToStudy)
         }
     })
 
+    // show previous flashcard
     document.querySelector(".previous-flashcard").addEventListener("click", () => {
         indexToStudy--
-        console.log(allFlashcards.length -1);
-        if(indexToStudy <= (allFlashcards.length -1)){
-            studyAllFlashcards(indexToStudy)
+        
+        if(indexToStudy <= (allFlashcards.length -1) && indexToStudy >= 0){
+            generateFlashcard(indexToStudy)
         } else if (indexToStudy < 0){
             indexToStudy = (allFlashcards.length -1)
-            console.log(indexToStudy);
-            studyAllFlashcards(indexToStudy)
+            generateFlashcard(indexToStudy)
         }
     })
-    }
+}
 
-    
-
-
-const studyAllFlashcards = (id) => {
+// display picked flashcard - show html structure on the card
+const generateFlashcard = (id) => {
     const listOfFlashcards = getSavedFlashcards()
     
     const cleanOneSide = document.querySelector(".one-side")
@@ -139,10 +117,16 @@ const studyAllFlashcards = (id) => {
     otherSideFlashcard.appendChild(newOtherSideText)
     document.querySelector(".one-side").appendChild(oneSideFlashcard)
     document.querySelector(".other-side").appendChild(otherSideFlashcard)
-    
-
-    
 }
 
+// remove all flashcards
+const deleteFlashcard = (id) => {
+    const allFlashcards = getSavedFlashcards()
 
+    const indexToDelete = allFlashcards.findIndex( (oneCard) => {
+        return oneCard.id === id  
+    })
 
+    allFlashcards.splice(indexToDelete, 1)
+    localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
+}
