@@ -50,6 +50,7 @@ const generatelistOfFlashcards = () => {
         newDeleteButton.addEventListener("click", () => {
             deleteFlashcard(oneFlashcard.id)
             generatelistOfFlashcards()
+
         })
         
         newButtonsDiv.appendChild(newStudyButton)
@@ -60,11 +61,12 @@ const generatelistOfFlashcards = () => {
         }
 )}
 
-// find one flashcard
+// find one flashcard¨
+let indexToStudy
 const studyOneFlashcard = (id) => {
     const allFlashcards = getSavedFlashcards()
 
-    let indexToStudy = allFlashcards.findIndex( (oneCard) => {
+    indexToStudy = allFlashcards.findIndex( (oneCard) => {
         return oneCard.id === id
     })
     generateFlashcard(indexToStudy)
@@ -127,6 +129,15 @@ const deleteFlashcard = (id) => {
         return oneCard.id === id  
     })
 
+    
     allFlashcards.splice(indexToDelete, 1)
     localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
+
+    let previousFlashcard
+    if(indexToDelete === 0) {
+        previousFlashcard = allFlashcards.length -1
+    } else {
+        previousFlashcard = indexToDelete - 1
+    }
+    generateFlashcard(previousFlashcard)
 }
