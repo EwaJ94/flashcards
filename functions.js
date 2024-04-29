@@ -38,7 +38,7 @@ const generatelistOfFlashcards = () => {
         newDiv.className = "one-add-flashcard"
         newText.textContent = oneFlashcard["oneSide"]
         newButtonsDiv.className = "buttons-in-list"
-        newStudyButton.textContent = "y"
+        newStudyButton.textContent = "🕮"
         newStudyButton.className = "study-one-flashcard"
         newDeleteButton.textContent = "x"
         newDeleteButton.className = "delete-flashcard"
