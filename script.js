@@ -1,7 +1,13 @@
+const addNewFlashcard = document.querySelector(".add-new-flashcard")
+const removeAll = document.querySelector(".remove-all")
+const flashcardList = document.querySelector(".list-of-flashcards")
+const frontSide = document.querySelector(".one-side")
+const backSide = document.querySelector(".other-side")
+
 generatelistOfFlashcards()
 
 // save input text to local storage
-const addFlashcard = document.querySelector(".add-new-flashcard")
+const addFlashcard = addNewFlashcard
 addFlashcard.addEventListener("submit", (e) => {
     e.preventDefault()
 
@@ -26,13 +32,13 @@ addFlashcard.addEventListener("submit", (e) => {
 })
 
 // remove all flashcards
-document.querySelector(".remove-all").addEventListener("click", () => {
+removeAll.addEventListener("click", () => {
     const question = confirm("Are you sure you want to remove all?")
 
     if (question) {
-        document.querySelector(".list-of-flashcards").textContent = ""
-        document.querySelector(".one-side").textContent = ""
-        document.querySelector(".other-side").textContent = ""
+        flashcardList.textContent = ""
+        frontSide.textContent = ""
+        backSide.textContent = ""
         localStorage.clear()
     }
 })

@@ -1,3 +1,10 @@
+const flashcardList = document.querySelector(".list-of-flashcards")
+const numberOfCards = document.querySelector(".counter")
+const nextFlashcard = document.querySelector(".next-flashcard")
+const previousFlashcard = document.querySelector(".previous-flashcard")
+const frontSide = document.querySelector(".one-side")
+const backSide = document.querySelector(".other-side")
+
 // get saved flashcard from LS
 const getSavedFlashcards = () => {
     const allFlashcards = localStorage.getItem("flashcards")
@@ -19,13 +26,13 @@ const saveFlashcard = (newFlashcard) => {
 // display list of flashcards to aside panel
 const generatelistOfFlashcards = () => {
     const listOfFlashcards = getSavedFlashcards()
-    document.querySelector(".list-of-flashcards").textContent = ""
-    document.querySelector(".counter").textContent = ""
+    flashcardList.textContent = ""
+    numberOfCards.textContent = ""
 
     // display the total number of flashcards
     let number = document.createElement("p")
     number.textContent = "Number of flashcards: " + (listOfFlashcards.length)
-    document.querySelector(".counter").appendChild(number)
+    numberOfCards.appendChild(number)
 
     // generate html structure
     listOfFlashcards.forEach ((oneFlashcard) => {
@@ -57,7 +64,7 @@ const generatelistOfFlashcards = () => {
         newButtonsDiv.appendChild(newDeleteButton)
         newDiv.appendChild(newText)
         newDiv.appendChild(newButtonsDiv)
-        document.querySelector(".list-of-flashcards").appendChild(newDiv)
+        flashcardList.appendChild(newDiv)
         }
 )}
 
@@ -72,7 +79,7 @@ const studyOneFlashcard = (id) => {
     generateFlashcard(indexToStudy)
 
     // show next flashcard
-    document.querySelector(".next-flashcard").addEventListener("click", () => {
+    nextFlashcard.addEventListener("click", () => {
         indexToStudy++
         
         if(indexToStudy <= (allFlashcards.length -1)){
@@ -84,7 +91,7 @@ const studyOneFlashcard = (id) => {
     })
 
     // show previous flashcard
-    document.querySelector(".previous-flashcard").addEventListener("click", () => {
+    previousFlashcard.addEventListener("click", () => {
         indexToStudy--
         
         if(indexToStudy <= (allFlashcards.length -1) && indexToStudy >= 0){
@@ -100,9 +107,9 @@ const studyOneFlashcard = (id) => {
 const generateFlashcard = (id) => {
     const listOfFlashcards = getSavedFlashcards()
     
-    const cleanOneSide = document.querySelector(".one-side")
+    const cleanOneSide = frontSide
     cleanOneSide.textContent = ""
-    const cleanOtherSide = document.querySelector(".other-side")
+    const cleanOtherSide = backSide
     cleanOtherSide.textContent = ""
     
     const oneSideFlashcard = document.createElement("div")
@@ -117,8 +124,8 @@ const generateFlashcard = (id) => {
     
     oneSideFlashcard.appendChild(newOneSideText)
     otherSideFlashcard.appendChild(newOtherSideText)
-    document.querySelector(".one-side").appendChild(oneSideFlashcard)
-    document.querySelector(".other-side").appendChild(otherSideFlashcard)
+    frontSide.appendChild(oneSideFlashcard)
+    backSide.appendChild(otherSideFlashcard)
 }
 
 // remove all flashcards
@@ -129,15 +136,27 @@ const deleteFlashcard = (id) => {
         return oneCard.id === id  
     })
 
-    
-    allFlashcards.splice(indexToDelete, 1)
-    localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
+    if(allFlashcards.length > 1) {
+        allFlashcards.splice(indexToDelete, 1)
+        localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
 
-    let previousFlashcard
-    if(indexToDelete === 0) {
-        previousFlashcard = allFlashcards.length -1
+        let previousFlashcard
+        if(indexToDelete === 0) {
+            previousFlashcard = allFlashcards.length -1
+        } else {
+            previousFlashcard = indexToDelete - 1
+        }
+        generateFlashcard(previousFlashcard)
+
     } else {
-        previousFlashcard = indexToDelete - 1
+        allFlashcards.length = 0
+        localStorage.clear()
+        const cleanOneSide = frontSide
+        cleanOneSide.textContent = ""
+        const cleanOtherSide = backSide
+        cleanOtherSide.textContent = ""
     }
-    generateFlashcard(previousFlashcard)
+    
+
+
 }
