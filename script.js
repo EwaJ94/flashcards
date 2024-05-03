@@ -1,8 +1,8 @@
 const addNewFlashcard = document.querySelector(".add-new-flashcard")
 const removeAll = document.querySelector(".remove-all")
-const flashcardList = document.querySelector(".list-of-flashcards")
-const frontSide = document.querySelector(".one-side")
-const backSide = document.querySelector(".other-side")
+const flashcardsList = document.querySelector(".list-of-flashcards")
+const frontSides = document.querySelector(".one-side")
+const backSides = document.querySelector(".other-side")
 
 generatelistOfFlashcards()
 
@@ -36,9 +36,9 @@ removeAll.addEventListener("click", () => {
     const question = confirm("Are you sure you want to remove all?")
 
     if (question) {
-        flashcardList.textContent = ""
-        frontSide.textContent = ""
-        backSide.textContent = ""
+        flashcardsList.textContent = ""
+        frontSides.textContent = ""
+        backSides.textContent = ""
         localStorage.clear()
     }
 })
