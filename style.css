@@ -12,6 +12,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     height: 100vh;
+    width: 100vw;
     background-color: var(--background-color);
 }
 
@@ -53,7 +54,7 @@ input[type=image]:active {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 20%;    
+    margin-left: 3rem;  
 }
 .form {
     box-shadow: 0 0.5rem 1rem 0 var(--shadow-color), 0 0.3rem 0.8rem 0 var(--shadow-color);
@@ -128,6 +129,7 @@ input[type=image]:active {
 
 .one-add-flashcard p {
     width: 70%;
+    overflow: hidden;
     color: var(--text-color);
     
 }
@@ -173,6 +175,9 @@ input[type=image]:active {
     color: var(--text-color);
 }
 
+.main-panel {
+    width: 100vw;
+}
 
 /* one flashcard */
 .flashcards {
@@ -183,8 +188,6 @@ input[type=image]:active {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 80%;
-   
 }
 
 .one-flashcard {
@@ -222,17 +225,25 @@ input[type=image]:active {
 
 .one-side {
     background-color: var(--second-color);
+}
+
+.one-side p {
     font-weight: 700;
     font-size: 2rem;
-    word-wrap: break-word;
+    word-wrap:break-word;
+    width: 12rem;
 }
 
 .other-side {
     background-color: var(--second-color);
+    transform: rotateY(-180deg);
+}
+
+.other-side p {
     font-weight: 400;
     word-wrap: break-word;
     font-size: 1.5rem;
-    transform: rotateY(-180deg);
+    width: 12rem;
 }
 
 .active {

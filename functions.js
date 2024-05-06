@@ -80,6 +80,44 @@ const studyOneFlashcard = (id) => {
     
 }
 
+// remove one flashcards
+let indexToDelete
+
+const deleteFlashcard = (id) => {
+    const allFlashcards = getSavedFlashcards()
+
+    indexToDelete = allFlashcards.findIndex( (oneCard) => {
+        return oneCard.id === id  
+    })
+    
+    if(allFlashcards.length > 1) {
+        allFlashcards.splice(indexToDelete, 1)
+        localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
+        
+        
+        let previousFlashcard
+        if(indexToDelete === 0) {
+            previousFlashcard = allFlashcards.length -1
+        } else if(indexToDelete === indexToStudy) {
+            previousFlashcard = indexToDelete - 1
+        }else if(indexToDelete < indexToStudy) {
+            previousFlashcard = indexToStudy - 1
+        } else {
+            previousFlashcard = indexToStudy
+        }
+
+        generateFlashcard(previousFlashcard)
+        
+    } else {
+        allFlashcards.length = 0
+        localStorage.clear()
+        const cleanOneSide = frontSide
+        cleanOneSide.textContent = ""
+        const cleanOtherSide = backSide
+        cleanOtherSide.textContent = ""
+    }
+}
+
 // show next flashcard
 nextFlashcard.addEventListener("click", () => {
     const allFlashcards = getSavedFlashcards()
@@ -98,10 +136,14 @@ previousFlashcard.addEventListener("click", () => {
     const allFlashcards = getSavedFlashcards()
     indexToStudy--
     
-    if(indexToStudy <= (allFlashcards.length -1) && indexToStudy >= 0){
-        generateFlashcard(indexToStudy)
+    console.log(indexToStudy);
+    if(indexToDelete<indexToStudy) {
+        console.log(indexToDelete);
+        generateFlashcard(indexToStudy-1)
     } else if (indexToStudy < 0){
-        indexToStudy = (allFlashcards.length -1)
+        indexToStudy = (allFlashcards.length-1)
+        generateFlashcard(indexToStudy)
+    }else if(indexToStudy <= (allFlashcards.length -1) && indexToStudy >= 0){
         generateFlashcard(indexToStudy)
     }
 })
@@ -132,42 +174,3 @@ const generateFlashcard = (id) => {
     backSide.appendChild(otherSideFlashcard)
 }
 
-// remove one flashcards
-let indexToDelete
-const deleteFlashcard = (id) => {
-    const allFlashcards = getSavedFlashcards()
-
-    indexToDelete = allFlashcards.findIndex( (oneCard) => {
-        return oneCard.id === id  
-    })
-
-    if(allFlashcards.length > 1) {
-        allFlashcards.splice(indexToDelete, 1)
-        localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
-console.log(allFlashcards);
-
-        let previousFlashcard
-        if(indexToDelete === 0) {
-            previousFlashcard = allFlashcards.length -1
-        } else if(indexToDelete === indexToStudy) {
-            previousFlashcard = indexToDelete - 1
-        }else if(indexToDelete < indexToStudy) {
-            previousFlashcard = indexToStudy - 1
-        } else {
-            previousFlashcard = indexToStudy
-        }
-
-        generateFlashcard(previousFlashcard)
-
-    } else {
-        allFlashcards.length = 0
-        localStorage.clear()
-        const cleanOneSide = frontSide
-        cleanOneSide.textContent = ""
-        const cleanOtherSide = backSide
-        cleanOtherSide.textContent = ""
-    }
-    
-
-
-}

@@ -1,0 +1,47 @@
+@media screen and (max-width: 1030px){
+    h1 {
+       margin-left: 6.5rem;
+
+    }
+    
+    .main-panel {
+        width: 80vw;
+        position: relative;
+    }
+
+}
+
+@media screen and (max-width: 630px){
+    .aside-panel {
+        margin-left: 1rem;
+    }
+}
+@media screen and (max-width: 590px){
+    h1 {
+        margin-left: 4.5rem;
+     }
+     
+    .form {
+        width: 8rem;
+    }
+
+    .list-of-flashcards{
+        width: 8rem;
+    }
+
+    .one-flashcard {
+        width: 12rem;
+        height: 20rem;
+    }
+    .one-add-flashcard p{
+        width: 65%;
+    }
+
+    .buttons-in-list{
+        width: 35%;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+
+}
