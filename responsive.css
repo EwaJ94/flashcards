@@ -29,10 +29,6 @@
         width: 8rem;
     }
 
-    .one-flashcard {
-        width: 12rem;
-        height: 20rem;
-    }
     .one-add-flashcard p{
         width: 65%;
     }
@@ -44,4 +40,46 @@
         
     }
 
+    .one-flashcard {
+        width: 12rem;
+        height: 20rem;
+    }
+    
+
+    .one-side p {
+        font-size: 1.8rem;
+    }
+
+    .other-side p {
+        font-size: 1.3rem;
+    }
+
+    input[type=image] {
+        width: 2rem;
+    }
+
+}
+
+@media screen and (max-width: 480px){
+    .one-flashcard {
+        width: 10rem;
+        height: 17rem;
+    }
+
+    .one-side p {
+        font-size: 1.5rem;
+    }
+
+    .other-side p {
+        font-size: 1rem;
+    }
+
+    input[type=image] {
+        width: 1.5rem;
+    }
+    
+
+    input[type=image] {
+        width: 2rem;
+    }
 }

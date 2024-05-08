@@ -1,7 +1,7 @@
 const flashcardList = document.querySelector(".list-of-flashcards")
 const numberOfCards = document.querySelector(".counter")
 const nextFlashcard = document.querySelector(".next-flashcard")
-const previousFlashcard = document.querySelector(".previous-flashcard")
+const showPreviousFlashcard = document.querySelector(".previous-flashcard")
 const frontSide = document.querySelector(".one-side")
 const backSide = document.querySelector(".other-side")
 
@@ -89,24 +89,27 @@ const deleteFlashcard = (id) => {
     indexToDelete = allFlashcards.findIndex( (oneCard) => {
         return oneCard.id === id  
     })
-    
+
     if(allFlashcards.length > 1) {
         allFlashcards.splice(indexToDelete, 1)
         localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
         
         
-        let previousFlashcard
+        let showPreviousFlashcard
         if(indexToDelete === 0) {
-            previousFlashcard = allFlashcards.length -1
+            showPreviousFlashcard = allFlashcards.length -1
+        } else if(indexToDelete === allFlashcards.length -1){
+            showPreviousFlashcard = 0
         } else if(indexToDelete === indexToStudy) {
-            previousFlashcard = indexToDelete - 1
-        }else if(indexToDelete < indexToStudy) {
-            previousFlashcard = indexToStudy - 1
+            showPreviousFlashcard = indexToDelete 
+        } else if(indexToDelete < indexToStudy) {
+            showPreviousFlashcard = indexToStudy 
+            indexToStudy--
         } else {
-            previousFlashcard = indexToStudy
+            showPreviousFlashcard = indexToDelete
         }
 
-        generateFlashcard(previousFlashcard)
+        generateFlashcard(showPreviousFlashcard)
         
     } else {
         allFlashcards.length = 0
@@ -132,17 +135,19 @@ nextFlashcard.addEventListener("click", () => {
     })
 
 // show previous flashcard
-previousFlashcard.addEventListener("click", () => {
+showPreviousFlashcard.addEventListener("click", () => {
     const allFlashcards = getSavedFlashcards()
+    
     indexToStudy--
     
     console.log(indexToStudy);
     if(indexToDelete<indexToStudy) {
         console.log(indexToDelete);
-        generateFlashcard(indexToStudy-1)
+        generateFlashcard(indexToStudy)
     } else if (indexToStudy < 0){
         indexToStudy = (allFlashcards.length-1)
         generateFlashcard(indexToStudy)
+        console.log(indexToStudy);
     }else if(indexToStudy <= (allFlashcards.length -1) && indexToStudy >= 0){
         generateFlashcard(indexToStudy)
     }
