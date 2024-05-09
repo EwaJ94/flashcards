@@ -263,11 +263,6 @@ input[type=image]:active {
     margin: 0 1rem;
 }
 
-
-.change-flashcard input {
-    margin: 1rem 0.5rem;
-}
-
 .remove-button {
     position: absolute;
     bottom: -4rem;
