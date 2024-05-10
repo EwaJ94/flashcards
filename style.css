@@ -22,6 +22,7 @@ h1 {
     transform: translate(-50%);
     font-family: var(--main-font);
     background: -webkit-linear-gradient(#CB2CED, #6791EB);
+    background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0.2rem 0.2rem 0.5rem var(--shadow-color);
@@ -56,6 +57,7 @@ input[type=image]:active {
     height: 100vh;
     margin-left: 3rem;  
 }
+
 .form {
     box-shadow: 0 0.5rem 1rem 0 var(--shadow-color), 0 0.3rem 0.8rem 0 var(--shadow-color);
     border-radius: 0.3rem;
@@ -63,10 +65,11 @@ input[type=image]:active {
     padding: 0.3rem;
     height: 10rem;
     width: 10rem;
-
 }
+
 .form h3 {
     background: -webkit-linear-gradient(#CB2CED, #6791EB);
+    background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: var(--main-font);
@@ -78,7 +81,6 @@ input[type=image]:active {
 .add-new-flashcard {
     display: flex;
     flex-direction: column;
-
 }
 
 .add-new-flashcard input {
@@ -95,14 +97,12 @@ input[type=image]:active {
     border: 0.2rem solid var(--first-color);
     font-weight: 600;
     cursor: pointer;
-
 }
 
 .submit-flashcard:hover {
     background: -webkit-linear-gradient(#CB2CED, #6791EB);
     color: var(--text-color);
 }
-
 
 .list-of-flashcards {
     display: flex;
@@ -115,7 +115,6 @@ input[type=image]:active {
     padding: 0.3rem;
     overflow-y: auto;
     z-index: 300;
-    
 }
 
 .one-add-flashcard {
@@ -131,14 +130,12 @@ input[type=image]:active {
     width: 70%;
     overflow: hidden;
     color: var(--text-color);
-    
 }
 
 .buttons-in-list{
     width: 30%;
     display: flex;
     justify-content: space-between;
-    
 }
 
 .buttons-in-list .study-one-flashcard, .delete-flashcard {
@@ -155,8 +152,6 @@ input[type=image]:active {
     background: -webkit-linear-gradient(#CB2CED, #6791EB);
 }
 
-
-
 .study-one-flashcard {
     padding: 0;
 }
@@ -168,6 +163,7 @@ input[type=image]:active {
 .delete-flashcard:active {
     transform: scale(0.75);
 }
+
 .counter {
     margin-top: -0.5rem;
     font-family: var(--main-font);
@@ -196,7 +192,6 @@ input[type=image]:active {
     height: 22rem;
     font-family: var(--main-font);
     perspective: 62.5rem;
-    
 }
 
 .flashcard-inner {
@@ -246,15 +241,12 @@ input[type=image]:active {
     width: 12rem;
 }
 
-
-
 /* buttons */
 .move-flashcards {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
 }
 
 .move-flashcards input {

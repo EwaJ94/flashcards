@@ -77,7 +77,6 @@ const studyOneFlashcard = (id) => {
         return oneCard.id === id
     })
     generateFlashcard(indexToStudy)
-    
 }
 
 // remove one flashcards
@@ -94,13 +93,15 @@ const deleteFlashcard = (id) => {
         allFlashcards.splice(indexToDelete, 1)
         localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
         
-        
         let showPreviousFlashcard
         if(indexToDelete === 0) {
             showPreviousFlashcard = allFlashcards.length -1
         } else if(indexToDelete === allFlashcards.length -1){
             showPreviousFlashcard = 0
+            console.log(indexToDelete);
         } else if(indexToDelete === indexToStudy) {
+            console.log(indexToDelete);
+            console.log(indexToStudy);
             showPreviousFlashcard = indexToDelete 
         } else if(indexToDelete < indexToStudy) {
             showPreviousFlashcard = indexToStudy 
