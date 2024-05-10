@@ -88,10 +88,18 @@
     }
 
     .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 30%;
         height: 10rem;
         margin: 0;
     }
+
+    .form h3 {
+        margin: 0.2rem 0;
+    }
+
     .list-of-flashcards {
         width: 60%;
         height: 10rem;
@@ -100,9 +108,8 @@
 
     .buttons-in-list{
         width: 20%;
-        
-        
     }
+
     .counter {
         display: none;
     }
