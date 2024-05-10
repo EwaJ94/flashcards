@@ -69,8 +69,53 @@
 }
 
 @media screen and (max-width: 480px){
-    h1 {
-        font-size: 1.5rem ;
+
+    .container {
+        flex-direction: column;
+        height: 100vh;
+    }
+    
+    h1{
+        display: none;
+    }
+    .aside-panel {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 7rem;
+        margin-top: 3rem;
+        width: 100vw;
+    }
+
+    .form {
+        width: 30%;
+        height: 10rem;
+        margin: 0;
+    }
+    .list-of-flashcards {
+        width: 60%;
+        height: 10rem;
+        margin: 0;
+    }
+
+    .buttons-in-list{
+        width: 20%;
+        
+        
+    }
+    .counter {
+        display: none;
+    }
+
+    .main-panel{
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    /* h1 {
+        font-size: 1.5rem;
+        margin-left: 0;
      }
 
     .one-flashcard {
@@ -92,11 +137,13 @@
         width: 1.5rem;
     }
     
-
+    .remove-button {
+        bottom: -3rem;
+    } */
 
 }
 
-@media screen and (max-width: 400px){
+/* @media screen and (max-width: 400px){
     
     .form {
         width: 7rem;
@@ -141,4 +188,8 @@
     input[type=image] {
         width: 1rem;
     }
-}
+
+    .remove-button {
+        bottom: -2.5rem;
+    }
+} */

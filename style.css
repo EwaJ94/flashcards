@@ -246,9 +246,7 @@ input[type=image]:active {
     width: 12rem;
 }
 
-.active {
-    background-color: aqua;
-}
+
 
 /* buttons */
 .move-flashcards {
