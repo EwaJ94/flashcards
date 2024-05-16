@@ -1,7 +1,7 @@
 const flashcardList = document.querySelector(".list-of-flashcards")
 const numberOfCards = document.querySelector(".counter")
 const nextFlashcard = document.querySelector(".next-flashcard")
-const showPreviousFlashcard = document.querySelector(".previous-flashcard")
+const showNextFlashcard = document.querySelector(".previous-flashcard")
 const frontSide = document.querySelector(".one-side")
 const backSide = document.querySelector(".other-side")
 
@@ -24,7 +24,7 @@ const saveFlashcard = (newFlashcard) => {
 }
 
 // display list of flashcards to aside panel
-const generatelistOfFlashcards = () => {
+const generateListOfFlashcards = () => {
     const listOfFlashcards = getSavedFlashcards()
     flashcardList.textContent = ""
     numberOfCards.textContent = ""
@@ -56,8 +56,7 @@ const generatelistOfFlashcards = () => {
 
         newDeleteButton.addEventListener("click", () => {
             deleteFlashcard(oneFlashcard.id)
-            generatelistOfFlashcards()
-
+            generateListOfFlashcards()
         })
         
         newButtonsDiv.appendChild(newStudyButton)
@@ -70,6 +69,7 @@ const generatelistOfFlashcards = () => {
 
 // find one flashcard
 let indexToStudy
+
 const studyOneFlashcard = (id) => {
     const allFlashcards = getSavedFlashcards()
 
@@ -77,6 +77,7 @@ const studyOneFlashcard = (id) => {
         return oneCard.id === id
     })
     generateFlashcard(indexToStudy)
+
 }
 
 // remove one flashcards
@@ -93,25 +94,18 @@ const deleteFlashcard = (id) => {
         allFlashcards.splice(indexToDelete, 1)
         localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
         
-        let showPreviousFlashcard
+        let showNextFlashcard
         if(indexToDelete === 0) {
-            showPreviousFlashcard = allFlashcards.length -1
-        } else if(indexToDelete === allFlashcards.length -1){
-            showPreviousFlashcard = 0
-            console.log(indexToDelete);
+            showNextFlashcard = indexToDelete++
+        } else if(indexToDelete === allFlashcards.length) {
+            showNextFlashcard = 0
         } else if(indexToDelete === indexToStudy) {
-            console.log(indexToDelete);
-            console.log(indexToStudy);
-            showPreviousFlashcard = indexToDelete 
-        } else if(indexToDelete < indexToStudy) {
-            showPreviousFlashcard = indexToStudy 
-            indexToStudy--
-        } else {
-            showPreviousFlashcard = indexToDelete
+            showNextFlashcard = indexToDelete++ 
+        } else if(indexToDelete !== indexToStudy) {
+            showNextFlashcard = 0
         }
-
-        generateFlashcard(showPreviousFlashcard)
-        
+        generateFlashcard(showNextFlashcard)
+   
     } else {
         allFlashcards.length = 0
         localStorage.clear()
@@ -125,35 +119,29 @@ const deleteFlashcard = (id) => {
 // show next flashcard
 nextFlashcard.addEventListener("click", () => {
     const allFlashcards = getSavedFlashcards()
-    
+
     indexToStudy++
-    if(indexToStudy <= (allFlashcards.length -1)){
+    if(indexToStudy <= (allFlashcards.length-1)){
         generateFlashcard(indexToStudy)
     } else if (indexToStudy > (allFlashcards.length -1)){
         indexToStudy = 0
         generateFlashcard(indexToStudy)
     }
-    })
-
+})
+    
 // show previous flashcard
-showPreviousFlashcard.addEventListener("click", () => {
+showNextFlashcard.addEventListener("click", () => {
     const allFlashcards = getSavedFlashcards()
     
     indexToStudy--
-    
-    console.log(indexToStudy);
-    if(indexToDelete<indexToStudy) {
-        console.log(indexToDelete);
+    if(indexToStudy < 0){
+        indexToStudy = allFlashcards.length-1
         generateFlashcard(indexToStudy)
-    } else if (indexToStudy < 0){
-        indexToStudy = (allFlashcards.length-1)
-        generateFlashcard(indexToStudy)
-        console.log(indexToStudy);
-    }else if(indexToStudy <= (allFlashcards.length -1) && indexToStudy >= 0){
+    } else if(indexToStudy <= (allFlashcards.length -1) && indexToStudy >= 0) {
         generateFlashcard(indexToStudy)
     }
+    
 })
-
 
 // display picked flashcard - show html structure on the card
 const generateFlashcard = (id) => {
@@ -179,4 +167,3 @@ const generateFlashcard = (id) => {
     frontSide.appendChild(oneSideFlashcard)
     backSide.appendChild(otherSideFlashcard)
 }
-

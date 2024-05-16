@@ -4,7 +4,7 @@ const flashcardsList = document.querySelector(".list-of-flashcards")
 const frontSides = document.querySelector(".one-side")
 const backSides = document.querySelector(".other-side")
 
-generatelistOfFlashcards()
+generateListOfFlashcards()
 
 // save input text to local storage
 const addFlashcard = addNewFlashcard
@@ -28,7 +28,7 @@ addFlashcard.addEventListener("submit", (e) => {
     e.target.elements.otherSide.value = ""
 
 // write the text on the list
-    generatelistOfFlashcards()
+    generateListOfFlashcards()
 })
 
 // remove all flashcards
