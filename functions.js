@@ -7,20 +7,38 @@ const backSide = document.querySelector(".other-side")
 
 // get saved flashcard from LS
 const getSavedFlashcards = () => {
-    const allFlashcards = localStorage.getItem("flashcards")
 
-    if (allFlashcards === null){
-        return []
+    if (typeof Storage !== "undefined"){
+        try {
+            const allFlashcards = localStorage.getItem("flashcards")
+
+            if (allFlashcards === null){
+                return []
+            } else {
+                return JSON.parse(allFlashcards)
+            }
+        } catch (error) {
+            console.log("Error accessing local storage")
+        }
     } else {
-        return JSON.parse(allFlashcards)
+        console.log("Local storage is not supported in this browser.");
     }
 }
 
 // save flashcard to LS
 const saveFlashcard = (newFlashcard) => {
-    const allFlashcards = getSavedFlashcards()
-    allFlashcards.push(newFlashcard)
-    localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
+
+    if (typeof Storage !== "undefined"){
+        try {
+            const allFlashcards = getSavedFlashcards()
+            allFlashcards.push(newFlashcard)
+            localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
+        } catch (error) {
+            console.log("Error accessing local storage")
+        }
+    } else {
+        console.log("Local storage is not supported in this browser.");
+    }
 }
 
 // display list of flashcards to aside panel
