@@ -198,3 +198,38 @@
         width: 1.5rem;
     }
 }
+
+@media screen and (max-height: 450px){
+    h1 {
+        font-size: x-large;
+    }
+
+    .form {
+        height: 10rem;
+    }
+
+    .list-of-flashcards {
+        height: 10rem;
+    }
+
+    .counter{
+        bottom: 1rem;
+    }
+
+    .one-flashcard {
+        height: 12rem;
+        width: 8rem;
+    }
+
+    .one-side p {
+        font-size: 1.2rem;
+        width: 8rem;
+    }
+
+    .other-side p {
+        font-size: 1rem;
+        width: 8rem;
+    }
+
+}
+
