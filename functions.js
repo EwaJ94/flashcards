@@ -1,7 +1,7 @@
 const flashcardList = document.querySelector(".list-of-flashcards")
 const numberOfCards = document.querySelector(".counter")
 const nextFlashcard = document.querySelector(".next-flashcard")
-const showNextFlashcard = document.querySelector(".previous-flashcard")
+const showPrevFlashcard = document.querySelector(".previous-flashcard")
 const frontSide = document.querySelector(".one-side")
 const backSide = document.querySelector(".other-side")
 
@@ -112,17 +112,17 @@ const deleteFlashcard = (id) => {
         allFlashcards.splice(indexToDelete, 1)
         localStorage.setItem("flashcards", JSON.stringify(allFlashcards))
         
-        let showNextFlashcard
+        let showPrevFlashcard
         if(indexToDelete === 0) {
-            showNextFlashcard = indexToDelete++
+            showPrevFlashcard = indexToDelete++
         } else if(indexToDelete === allFlashcards.length) {
-            showNextFlashcard = 0
+            showPrevFlashcard = 0
         } else if(indexToDelete === indexToStudy) {
-            showNextFlashcard = indexToDelete++ 
+            showPrevFlashcard = indexToDelete++ 
         } else if(indexToDelete !== indexToStudy) {
-            showNextFlashcard = 0
+            showPrevFlashcard = 0
         }
-        generateFlashcard(showNextFlashcard)
+        generateFlashcard(showPrevFlashcard)
    
     } else {
         allFlashcards.length = 0
@@ -148,7 +148,7 @@ nextFlashcard.addEventListener("click", () => {
 })
     
 // show previous flashcard
-showNextFlashcard.addEventListener("click", () => {
+showPrevFlashcard.addEventListener("click", () => {
     const allFlashcards = getSavedFlashcards()
     
     indexToStudy--
