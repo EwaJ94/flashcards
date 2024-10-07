@@ -95,7 +95,6 @@ const studyOneFlashcard = (id) => {
         return oneCard.id === id
     })
     generateFlashcard(indexToStudy)
-
 }
 
 // remove one flashcards
@@ -158,7 +157,6 @@ showPrevFlashcard.addEventListener("click", () => {
     } else if(indexToStudy <= (allFlashcards.length -1) && indexToStudy >= 0) {
         generateFlashcard(indexToStudy)
     }
-    
 })
 
 // display picked flashcard - show html structure on the card
