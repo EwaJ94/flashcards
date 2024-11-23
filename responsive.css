@@ -47,58 +47,6 @@
 }
 
 @media screen and (max-width: 560px){
-    h1 {
-        font-size: 1.5rem;
-        margin-left: 3.5rem;
-     }
-     
-    .form {
-        width: 8rem;
-    }
-
-    .list-of-flashcards{
-        width: 8rem;
-    }
-
-    .one-add-flashcard p{
-        width: 60%;
-    }
-
-    .buttons-in-list{
-        width: 37%;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .counter {
-        font-size:x-small;
-    }
-
-    .one-flashcard {
-        width: 10rem;
-        height: 18rem;
-    }
-    
-    .one-side p {
-        font-size: 1rem;
-        width: 8rem;
-    }
-
-    .other-side p {
-        font-size: 1rem;
-        width: 8rem;
-    }
-
-    input[type=image] {
-        width: 1.5rem;
-    }
-
-    .move-flashcards input {
-        margin: 0 0.5rem;
-    }
-}
-
-@media screen and (max-width: 480px){
     .container {
         flex-direction: column;
         height: 100vh;
@@ -107,7 +55,7 @@
     h1 {
         display: none;
     }
-
+     
     .aside-panel {
         flex-direction: row;
         justify-content: space-evenly;
@@ -150,157 +98,12 @@
         left: 50%;
         transform: translate(-50%,-50%);
     }
-}
-
-@media screen and (max-height: 500px){
-    h1 {
-        margin-left: 0;
-    }
-
-    .aside-panel {
-        width: 50%;
-        flex-direction: row;
-        justify-content: space-evenly;
-        margin-left: 0;
-    }
-
-    .form {
-        height: 15rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0;
-    }
-
-    .list-of-flashcards {
-        height: 15rem;
-        margin: 0;
-    }
-
-    .counter {
-        position: absolute;
-        bottom: 3rem;
-    }
-
-    .main-panel{
-        width: 50%;
-    }
-
-    .one-flashcard {
-        height: 20rem;
-        width: 13rem;
-    }
-
-    input[type=image] {
-        width: 2rem;
-    }
-
-    .remove-button {
-        bottom: -3rem;
-    }
-}
-
-@media screen and (max-height: 450px){
-    .form {
-        height: 12rem;
-    }
-
-    .list-of-flashcards {
-        height: 12rem;
-    }
-
-    .one-flashcard {
-        height: 15rem;
-        width: 10rem;
-    }
-
-    .one-side p {
-        font-size: 1.5rem;
-        width: 10rem;
-    }
-
-    .other-side p {
-        font-size: 1.3rem;
-        width: 10rem;
-    }
-
-    input[type=image] {
-        width: 1.5rem;
-    }
-}
-
-@media screen and (max-height: 450px){
-    h1 {
-        font-size: x-large;
-    }
-
-    .form {
-        height: 10rem;
-    }
-
-    .list-of-flashcards {
-        height: 10rem;
-    }
-
-    .counter {
-        bottom: 1rem;
-    }
-
-    .one-flashcard {
-        height: 12rem;
-        width: 8rem;
-    }
-
-    .one-side p {
-        font-size: 1.2rem;
-        width: 8rem;
-    }
-
-    .other-side p {
-        font-size: 1rem;
-        width: 8rem;
-    }
-}
-
-@media screen and (max-height: 280px){
-    h1 {
-        margin-bottom: 0;
-    }
-
-    .form {
-        height: 9rem;
-    }
-
-    .form h3 {
-        font-size: medium;
-    }
-
-    .list-of-flashcards {
-        height: 9rem;
-    }
-
-    .counter {
-        bottom: 0.5rem;
-    }
-
-    .one-flashcard {
-        height: 10rem;
-        width: 7rem;
-    }
-
-    .one-side p {
-        width: 7rem;
-    }
-
-    .other-side p {
-        width: 7rem;
-    }
 
     input[type=image] {
         width: 1.5rem;
     }
 
-    .remove-button {
-        bottom: -2.5rem;
+    .move-flashcards input {
+        margin: 0 0.5rem;
     }
 }
