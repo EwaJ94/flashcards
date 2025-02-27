@@ -32,7 +32,7 @@ addFlashcard.addEventListener("submit", (e) => {
 })
 
 // remove all flashcards
-removeAll.addEventListener("click", () => {
+removeAll.addEventListener("pointerdown", () => {
     const question = confirm("Are you sure you want to remove all?")
 
     if (question) {

@@ -68,11 +68,11 @@ const generateListOfFlashcards = () => {
         newDeleteButton.textContent = "x"
         newDeleteButton.className = "delete-flashcard"
 
-        newStudyButton.addEventListener("click", () => {
+        newStudyButton.addEventListener("pointerdown", () => {
             studyOneFlashcard(oneFlashcard.id)
         })
 
-        newDeleteButton.addEventListener("click", () => {
+        newDeleteButton.addEventListener("pointerdown", () => {
             deleteFlashcard(oneFlashcard.id)
             generateListOfFlashcards()
         })
@@ -134,7 +134,7 @@ const deleteFlashcard = (id) => {
 }
 
 // show next flashcard
-nextFlashcard.addEventListener("click", () => {
+nextFlashcard.addEventListener("pointerdown", () => {
     const allFlashcards = getSavedFlashcards()
 
     indexToStudy++
@@ -147,7 +147,7 @@ nextFlashcard.addEventListener("click", () => {
 })
     
 // show previous flashcard
-showPrevFlashcard.addEventListener("click", () => {
+showPrevFlashcard.addEventListener("pointerdown", () => {
     const allFlashcards = getSavedFlashcards()
     
     indexToStudy--
